@@ -104,23 +104,40 @@ for i=1:8
     L5_segmented(:,:,i)=L5_rotated(MinMax_Lotes(1,2,5):MinMax_Lotes(2,2,5),MinMax_Lotes(1,1,5):MinMax_Lotes(2,1,5),i);
     L6_segmented(:,:,i)=L6_rotated(MinMax_Lotes(1,2,6):MinMax_Lotes(2,2,6),MinMax_Lotes(1,1,6):MinMax_Lotes(2,1,6),i);
     L7_segmented(:,:,i)=L6_rotated(MinMax_Lotes(1,2,7):MinMax_Lotes(2,2,7),MinMax_Lotes(1,1,7):MinMax_Lotes(2,1,7),i);
+    
+    L1_mask = imresize(L1_mask,size(L1_segmented(:,:,1)));
+    L2_mask = imresize(L2_mask,size(L2_segmented(:,:,1)));
+    L3_mask = imresize(L3_mask,size(L3_segmented(:,:,1)));
+    L4_mask = imresize(L4_mask,size(L4_segmented(:,:,1)));
+    L5_mask = imresize(L5_mask,size(L5_segmented(:,:,1)));
+    L6_mask = imresize(L6_mask,size(L6_segmented(:,:,1)));
+    L7_mask = imresize(L7_mask,size(L7_segmented(:,:,1)));
 
-    L1_resized(:,:,i) = imresize(L1_segmented(:,:,i),size(L1_mask));
-    L2_resized(:,:,i) = imresize(L2_segmented(:,:,i),size(L2_mask));
-    L3_resized(:,:,i) = imresize(L3_segmented(:,:,i),size(L3_mask));
-    L4_resized(:,:,i) = imresize(L4_segmented(:,:,i),size(L4_mask));
-    L5_resized(:,:,i) = imresize(L5_segmented(:,:,i),size(L5_mask));
-    L6_resized(:,:,i) = imresize(L6_segmented(:,:,i),size(L6_mask));
-    L7_resized(:,:,i) = imresize(L7_segmented(:,:,i),size(L7_mask));
+    % L1_resized(:,:,i) = imresize(L1_segmented(:,:,i),size(L1_mask));
+    % L2_resized(:,:,i) = imresize(L2_segmented(:,:,i),size(L2_mask));
+    % L3_resized(:,:,i) = imresize(L3_segmented(:,:,i),size(L3_mask));
+    % L4_resized(:,:,i) = imresize(L4_segmented(:,:,i),size(L4_mask));
+    % L5_resized(:,:,i) = imresize(L5_segmented(:,:,i),size(L5_mask));
+    % L6_resized(:,:,i) = imresize(L6_segmented(:,:,i),size(L6_mask));
+    % L7_resized(:,:,i) = imresize(L7_segmented(:,:,i),size(L7_mask));
 
-    L1(:,:,i) = L1_resized(:,:,i).*L1_mask;
-    L2(:,:,i) = L2_resized(:,:,i).*L2_mask;
-    L3(:,:,i) = L3_resized(:,:,i).*L3_mask;
-    L4(:,:,i) = L4_resized(:,:,i).*L4_mask;
-    L5(:,:,i) = L5_resized(:,:,i).*L5_mask;
-    L6(:,:,i) = L6_resized(:,:,i).*L6_mask;
-    L7(:,:,i) = L7_resized(:,:,i).*L7_mask;
+    % L1(:,:,i) = L1_resized(:,:,i).*L1_mask;
+    % L2(:,:,i) = L2_resized(:,:,i).*L2_mask;
+    % L3(:,:,i) = L3_resized(:,:,i).*L3_mask;
+    % L4(:,:,i) = L4_resized(:,:,i).*L4_mask;
+    % L5(:,:,i) = L5_resized(:,:,i).*L5_mask;
+    % L6(:,:,i) = L6_resized(:,:,i).*L6_mask;
+    % L7(:,:,i) = L7_resized(:,:,i).*L7_mask;
+
+    L1(:,:,i) = L1_segmented(:,:,i).*L1_mask;
+    L2(:,:,i) = L2_segmented(:,:,i).*L2_mask;
+    L3(:,:,i) = L3_segmented(:,:,i).*L3_mask;
+    L4(:,:,i) = L4_segmented(:,:,i).*L4_mask;
+    L5(:,:,i) = L5_segmented(:,:,i).*L5_mask;
+    L6(:,:,i) = L6_segmented(:,:,i).*L6_mask;
+    L7(:,:,i) = L7_segmented(:,:,i).*L7_mask;
 end
+
 L1_img=ShowImage(L1);
 L2_img=ShowImage(L2);
 L3_img=ShowImage(L3);
